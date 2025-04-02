@@ -30,7 +30,7 @@ Filament Hashids is a Laravel package that automatically encodes and decodes mod
 Install the package via Composer:
 
 ```bash
-composer require swindon/filament-hashids:dev-main --prefer-source
+composer config repositories.swindon/filament-hashids vcs "https://github.com/swindon/filament-hashids" && composer require swindon/filament-hashids:dev-main
 ```
 
 If you wish to customise the configuration, run the install command:
