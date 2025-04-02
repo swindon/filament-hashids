@@ -2,6 +2,19 @@
 
 Filament Hashids is a Laravel package that automatically encodes and decodes model IDs using [vinkla/hashids](https://github.com/vinkla/hashids). By replacing numerical IDs with obfuscated Hashids, this package not only improves the aesthetics of your URLs but also provides an extra layer of security.
 
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Using the Model Trait](#using-the-model-trait)
+  - [Blade Directive](#blade-directive)
+  - [URL Decoding Middleware](#url-decoding-middleware)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [Licence](#licence)
+
 ## Features
 
 - **Automatic Hashid Encoding**: Transform model IDs in your URLs (e.g. `/admin/users/1/edit` becomes `/admin/users/0l8q7xpnm4k63jo9/edit`).
