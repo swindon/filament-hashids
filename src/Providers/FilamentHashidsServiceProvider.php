@@ -1,6 +1,6 @@
 <?php
 
-namespace Swindon\FilamentHashids;
+namespace Swindon\FilamentHashids\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
