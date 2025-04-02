@@ -1,0 +1,44 @@
+{
+    "name": "swindon/filament-hashids",
+    "description": "A Laravel Filament package that automatically encodes and decodes model IDs using vinkla/hashids for improved security and aesthetics.",
+    "keywords": [
+        "laravel",
+        "filament",
+        "hashids",
+        "url",
+        "encoding",
+        "security"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Scott Windon",
+            "email": "me@scottwindon.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "vinkla/hashids": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Swindon\\FilamentHashids\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Swindon\\FilamentHashids\\FilamentHashidsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
