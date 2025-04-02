@@ -14,7 +14,7 @@ class InstallHashidsCommand extends Command
         $this->info('Publishing configuration...');
         $this->call('vendor:publish', [
             '--tag' => 'config',
-            '--provider' => 'Swindon\\FilamentHashids\\FilamentHashidsServiceProvider'
+            '--provider' => 'Swindon\\FilamentHashids\\Providers\\FilamentHashidsServiceProvider'
         ]);
 
         $this->info('Filament Hashids package installed successfully.');

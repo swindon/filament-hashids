@@ -13,4 +13,9 @@ trait HasHashid
     {
         return HashidsManager::encode($this->getKey());
     }
+
+    public function getRouteKey()
+    {
+        return $this->getHashid();
+    }
 }

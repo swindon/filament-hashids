@@ -4,10 +4,8 @@ namespace Swindon\FilamentHashids\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Filament\Facades\Filament;
-use Swindon\FilamentHashids\Middleware\DecodeHashidsMiddleware;
+use Swindon\FilamentHashids\Middleware\FilamentHashidsMiddleware;
 use Swindon\FilamentHashids\Console\Commands\InstallHashidsCommand;
-use Swindon\FilamentHashids\Filament\HashidsPlugin;
 
 class FilamentHashidsServiceProvider extends ServiceProvider
 {
@@ -32,10 +30,7 @@ class FilamentHashidsServiceProvider extends ServiceProvider
         }
 
         // Register middleware alias
-        $this->app['router']->aliasMiddleware('decode-hashids', DecodeHashidsMiddleware::class);
-
-        // Register the Filament Plugin for integration
-        Filament::registerPlugin(HashidsPlugin::class);
+        $this->app['router']->aliasMiddleware('filament-hashids', FilamentHashidsMiddleware::class);
 
         // Register the Blade directive for generating Hashids in templates.
         Blade::directive('hashid', function ($expression) {

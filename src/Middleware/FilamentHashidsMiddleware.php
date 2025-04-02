@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Swindon\FilamentHashids\Support\HashidsManager;
 
-class DecodeHashidsMiddleware
+class FilamentHashidsMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
