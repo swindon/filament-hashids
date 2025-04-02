@@ -35,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Swindon\\FilamentHashids\\FilamentHashidsServiceProvider"
+                "Swindon\\FilamentHashids\\Providers\\FilamentHashidsServiceProvider"
             ]
         }
     },
