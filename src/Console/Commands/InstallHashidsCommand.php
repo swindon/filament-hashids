@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class InstallHashidsCommand extends Command
 {
-    protected $signature = 'install:hashids';
+    protected $signature = 'install:filament-hashids';
     protected $description = 'Install the Filament Hashids package';
 
     public function handle()

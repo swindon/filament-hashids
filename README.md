@@ -10,7 +10,7 @@ Filament Hashids is a Laravel package that automatically encodes and decodes mod
 - [Usage](#usage)
   - [Using the Model Trait](#using-the-model-trait)
   - [Blade Directive](#blade-directive)
-  - [URL Decoding Middleware](#url-decoding-middleware)
+  - [Setup the Middleware](#setup-the-middleware)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [Licence](#licence)
@@ -36,7 +36,7 @@ composer config repositories.swindon/filament-hashids vcs "https://github.com/sw
 If you wish to customise the configuration, run the install command:
 
 ```bash
-php artisan install:hashids
+php artisan install:filament-hashids
 ```
 
 This command will publish the configuration file (`config/filament-hashids.php`) to your Laravel application.
@@ -73,6 +73,13 @@ $user = User::find(1);
 echo $user->getHashid();
 ```
 
+You can query by Hashid for a model:
+
+```php
+$user = User::findHashId($hashId);
+$users = User::whereHashId($hashId)->get();
+```
+
 ### Blade Directive
 
 In your Blade templates, generate a Hashid easily with the provided directive:
@@ -83,14 +90,45 @@ In your Blade templates, generate a Hashid easily with the provided directive:
 
 This will output the encoded ID of the model.
 
-### URL Decoding Middleware
+### Setup the Middleware
 
-When defining your routes, ensure that you apply the `decode-hashids` middleware. This middleware will decode any Hashids in the route parameters automatically.
+Middleware ensures that incoming requests with Hashids are automatically decoded into their corresponding numerical IDs. You can set it up in two ways:
+
+#### Via Panels
+
+To apply the middleware globally to a Filament panel, include it in the panel's middleware stack:
 
 ```php
-Route::middleware('decode-hashids')->group(function () {
-    Route::get('/admin/users/{id}/edit', [UserController::class, 'edit']);
-});
+use Filament\Panel;
+use Filament\PanelProvider;
+use Swindon\FilamentHashids\Middleware\FilamentHashidsMiddleware;
+
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->middleware([
+                FilamentHashidsMiddleware::class, // Decodes Hashids for all routes in this panel
+                // ...existing code...
+            ]);
+    }
+}
+```
+
+#### Via Specific Resources
+
+If you want to apply the middleware to specific resources only, you can define it in the resource's `$routeMiddleware` property:
+
+```php
+use Filament\Resources\Resource;
+
+class UserResource extends Resource
+{
+    public static array|string $routeMiddleware = [
+        'filament-hashids', // Ensures Hashids are decoded for this resource's routes
+    ];
+}
 ```
 
 ## Testing
